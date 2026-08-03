@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --matte: #111111;
+    --gold: #d4af37;
+    --beige: #f5f1ea;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-beige text-matte font-sans antialiased;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-matte;
+  }
+}
+
+@layer components {
+  .container-luxury {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gold px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-matte transition-all duration-500 hover:shadow-gold hover:brightness-110;
+  }
+
+  .btn-outline {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border border-gold/60 px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-gold transition-all duration-500 hover:bg-gold hover:text-matte;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium uppercase tracking-widest text-matte transition-colors duration-300 hover:text-gold;
+  }
+
+  .section-eyebrow {
+    @apply mb-4 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-gold;
+  }
+
+  .section-title {
+    @apply font-display text-4xl font-semibold leading-tight text-matte sm:text-5xl lg:text-6xl;
+  }
+
+  .section-title-light {
+    @apply font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl;
+  }
+
+  .card-luxury {
+    @apply rounded-3xl border border-black/5 bg-white shadow-soft transition-all duration-500;
+  }
+
+  .gold-divider {
+    @apply mx-auto h-px w-20 bg-gradient-to-r from-transparent via-gold to-transparent;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(110deg, #b8962e 0%, #f6edcf 45%, #d4af37 70%, #937425 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(110deg, #937425 0%, #d4af37 25%, #f6edcf 50%, #d4af37 75%, #937425 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+  .reveal-delay-5 { transition-delay: 0.6s; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f1ea;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #937425);
+  border-radius: 999px;
+  border: 2px solid #f5f1ea;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
